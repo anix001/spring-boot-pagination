@@ -4,6 +4,8 @@ import com.pagination.modal.Product;
 import com.pagination.repository.ProductRepository;
 import com.pagination.service.ProductService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -28,17 +30,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findProductsWithSorting(String field) {
-        return null;
+        return productRepository.findAll(Sort.by(Sort.Direction.ASC, field));
     }
 
     @Override
     public Page<Product> findProductsWithPagination(int offset, int pageSize) {
-        return null;
+        return productRepository.findAll(PageRequest.of(offset, pageSize));
     }
 
     @Override
     public Page<Product> findProductsWithPaginationAndSorting(int offset, int pageSize, String field) {
-        return null;
+        return productRepository.findAll(PageRequest.of(offset, pageSize).withSort(Sort.by(field)));
     }
 
 //  to add random 200 data
