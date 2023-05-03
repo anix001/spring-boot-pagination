@@ -25,12 +25,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findAllProducts() {
-        return productRepository.findAll();
+        return productRepository.fetchAllProducts();
     }
 
     @Override
     public List<Product> findProductsWithSorting(String field) {
         return productRepository.findAll(Sort.by(Sort.Direction.ASC, field));
+//        return productRepository.fetchAllProductsWithSorting(field);
     }
 
     @Override
